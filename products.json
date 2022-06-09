@@ -1,0 +1,18 @@
+[
+    {
+       
+        "purchaseDate": "2022-06-05",
+        "productName": "mobile",
+        "purchasePrice": 4500,
+        "qty": 10,
+        "sellingPrice": 5000
+    },
+    {
+    
+        "purchaseDate": "2022-06-05",
+        "productName": "headphone",
+        "purchasePrice": 1200,
+        "qty": 10,
+        "sellingPrice": 1500
+    }
+]

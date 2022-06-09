@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubrosoft Buy Sell</title>
+  <script type="text/javascript" src="config.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+
+
+
+</head>
+
+<body translate="no">
+
+
+
+  <div class="main-container">
+    <div class="container">
+
+
+
+
+      <div class="tabs">
+        <div class="tab">
+          <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+          <label for="tab-1" class="tab-label">Purchase</label>
+          <div class="tab-content">
+            <!-- multistep form -->
+            <h2 class="fs-title">Add Your Products</h2>
+            <form id="msform">
+              <div>
+                <fieldset id="purchaseInput">
+                  <div class="grid-container" style="margin-bottom: 15px;">
+                    <label>Sr.</label>
+                    <label>Product Name</label>
+                    <label>Purchase Price</label>
+                    <label>Qty</label>
+                    <label>Selling Price</label>
+                  </div>
+
+                </fieldset>
+
+              </div>
+              <!-- fieldsets -->
+
+
+
+
+              <div class="footer_btn">
+                <input class=" delete-button" type="button" value="Remove" onclick="removePurchaseRow()" />
+                <input style="background-color: #428BFF;" class=" action-button" type="button" value="Add"
+                  onclick="addPurchaseRow()" />
+                <div class="footer_btn" style="text-align: center;">
+                  <input type="date" style="width: 200px;" name="pDate" id="pDate" />
+                  <input class=" action-button" type="submit" value="Submit" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="tab">
+          <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+          <label for="tab-2" class="tab-label">Sell</label>
+          <div class="tab-content">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="loader_container" id="sellLoader">
+                  <div class="loader_yellow"></div>
+                  <div class="loader_red"></div>
+                  <div class="loader_blue"></div>
+                  <div class="loader_violet"></div>
+                </div>
+                <table id="SellTable">
+
+                  <thead id="sellHeader">
+                    <tr>
+                      <th>Name</th>
+                      <th>Purchase Price</th>
+                      <th>Qty</th>
+                      <th>Selling Price</th>
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="selltablebody">
+                    
+
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="tab">
+          <input type="radio" name="css-tabs"  id="tab-3" class="tab-switch">
+          <label for="tab-3" class="tab-label">Transactions</label>
+          <div class="tab-content">
+            <div class="loader_container" id="sellLoader">
+              <div class="loader_yellow"></div>
+              <div class="loader_red"></div>
+              <div class="loader_blue"></div>
+              <div class="loader_violet"></div>
+            </div>
+            <table id="transactionTable">
+            </table>
+          </div>
+        </div>
+        <div class="tab">
+          <input type="radio" name="css-tabs" id="tab-4" class="tab-switch">
+          <label for="tab-4" class="tab-label">Products</label>
+          <div class="tab-content">
+            <div class="loader_container" id="sellLoader">
+              <div class="loader_yellow"></div>
+              <div class="loader_red"></div>
+              <div class="loader_blue"></div>
+              <div class="loader_violet"></div>
+            </div>
+            <table id="ProductTable">
+            </table>
+
+          </div>
+        </div>
+        <div class="tab">
+          <input type="radio" name="css-tabs" id="tab-5"  class="tab-switch">
+          <label for="tab-5" class="tab-label">Dashboard</label>
+          <div class="tab-content">
+           
+            <div class="sweetmsg">
+              UnLock to 
+              <br/>
+              See all your stats and chart here
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+  <!-- The Modal -->
+  <div id="SellModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" onclick="closeSellModel()">&times;</span>
+      <p id="sellModelname"></p>
+      <div class="productdata">
+        <span>Qty: </span>
+        <span id="sellModelqty"></span>
+        <span>Selling Price: </span>
+        <span id="sellModelsprice"></span>
+        <span>Total Price: </span>
+        <span id="sellModeltprice"></span>
+
+
+      </div>
+      
+      <button style="width: 100%;" onclick="sellConfirm()" class="btn green">Sell</button>
+    </div>
+
+  </div>
+  <div id="PurchaseModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-contentp">
+      <span class="close" onclick="$('#PurchaseModal').hide()">&times;</span>
+      <p id="puchaseDate">Date: </p>
+      <div >
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>PurchasePrice</th>
+              <th>Qty</th>
+              <th>Total Purchase</th>
+              <th>Selling Price</th>
+            </tr>
+          </thead>
+          <tbody  id="purchaseTable">
+
+          </tbody>
+        </table>
+       
+
+      </div>
+      <br/>
+      <p id="tltAmount"></p>
+      
+      <div style="text-align: center;">
+        <button onclick="purchaseCfm()" class="btn green">Confirm</button>
+      </div>
+     
+    </div>
+
+  </div>
+
+
+
+  <script src='./jquery.min.js'></script>
+  <script src='./dataTables.js'></script>
+  <script src='./dataBoot.js'></script>
+  
+  <script defer type="text/javascript" src="./webapi.js" ></script>
+  <script defer type="text/javascript" src="./maketable.js" defer></script>
+  <script defer type="text/javascript" src="./app.js" defer></script>
+  
+
+
+
+</html>
